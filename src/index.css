@@ -1,13 +1,112 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@1,500&display=swap');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  background: hsl(214, 47%, 23%);
+  color: #fff;
+  padding: 20px;
+}
+.header {
+  max-width: 50%;
+  margin: 10px auto;
+  border: 2px solid hsl(217, 16%, 45%);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.score{
+  background: #fff;
+  padding: 5px 40px;
+  border-radius: 10px;
+}
+
+.triangle{
+  max-width: 50%;
+  margin: 10px auto;
+  background-image: url("images/bg-triangle.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 380px;
+}
+.paper{
+  background: #fff;
+  border: 15px solid hsl(230, 89%, 62%);
+  border-radius: 50%;
+  padding: 30px;
+  position: relative;
+  top: 20px;
+  left: 120px;
+}
+.paper:hover{
+  box-shadow: 3px 3px 15px hsl(230, 89%, 65%);
+  cursor: pointer;
+}
+
+.scissors{
+  background: #fff;
+  border: 15px solid hsl(39, 89%, 49%);
+  border-radius: 50%;
+  padding: 30px;
+  position: relative;
+  top: 20px;
+  left: 260px;
+}
+.scissors:hover{
+  box-shadow: 3px 3px 15px hsl(40, 84%, 53%);
+  cursor: pointer;
+}
+
+.rock{
+  background: #fff;
+  border: 15px solid hsl(349, 71%, 52%);
+  border-radius: 50%;
+  padding: 30px;
+  position: relative;
+  top: 230px;
+  left: -10px;
+}
+.rock:hover{
+  box-shadow: 3px 3px 15px hsl(349, 70%, 56%); 
+  cursor: pointer;
+}
+
+.rule-btn-div{
+  float: right;
+  margin: 0;
+}
+.rule-btn {
+  background: inherit;
+  padding: 10px 40px;
+  color: #fff;
+  border: 2px solid hsl(217, 16%, 45%);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal{
+  background: #fff;
+  clear: both;
+  max-width: 30%;
+  padding: 30px;
+  border-radius: 10px;
+  position: absolute;
+  top: 140px;
+  left: 500px
+}
+.modal-head{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px;
+}
+.modal h2{
+  color: hsl(229, 25%, 31%);
+}
+.close{
+  cursor: pointer;
 }
