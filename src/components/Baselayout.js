@@ -18,7 +18,7 @@ const Baselayout = ({children}) => {
     return ( 
         <>
             <Header />
-            <div className='triangle'>
+            <div>
                 {children}
             </div>
 

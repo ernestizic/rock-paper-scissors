@@ -9,9 +9,11 @@ const Gameplay = () => {
     const {rock, paper, scissors} = useContext(GameContext)
     return (
         <Baselayout>
-            <img src={paperimg} alt='hand' className='paper' onClick={paper}/>
-            <img src={scissorsimg} alt='hand' className='scissors' onClick={scissors}/>
-            <img src={rockimg} alt='hand' className='rock' onClick={rock}/>
+            <div className='triangle'>
+                <img src={paperimg} alt='hand' className='paper' onClick={paper}/>
+                <img src={scissorsimg} alt='hand' className='scissors' onClick={scissors}/>
+                <img src={rockimg} alt='hand' className='rock' onClick={rock}/>
+            </div>
         </Baselayout>
     )
 }

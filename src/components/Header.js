@@ -3,7 +3,7 @@ import { GameContext } from '../GameContext';
 import logo from '../images/logo.svg';
 
 const Header = () => {
-    const {score} = useContext(GameContext)
+    const {score} = useContext(GameContext);
     return (
         <div className='header'>
             <div className='logo'>
