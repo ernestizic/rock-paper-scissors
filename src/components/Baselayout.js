@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import propTypes from 'prop-types';
+//import propTypes from 'prop-types';
 import Header from './Header';
 import Modal from './Modal';
 
@@ -15,6 +15,7 @@ const Baselayout = ({children}) => {
     const hideModal =()=> {
         setModal(false);
     }
+
     return ( 
         <>
             <Header />
@@ -25,14 +26,14 @@ const Baselayout = ({children}) => {
             <div className='rule-btn-div'>
                 <button className='rule-btn' onClick={showModal}>RULES</button>
             </div>
-            {modal && <Modal hideModal={hideModal}/> }
+            {modal && <Modal hideModal={hideModal} /> }
         </>
      );
 }
 
-
+/*
 Baselayout.propTypes = {
     children: propTypes.arrayOf(propTypes.element).isRequired
 }
- 
+*/
 export default Baselayout;

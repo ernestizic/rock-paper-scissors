@@ -1,4 +1,4 @@
-import React, { createContext, useState, useCallback, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 import { useHistory } from 'react-router';
 import paperimg from './images/icon-paper.svg';
 import scissorsimg from './images/icon-scissors.svg';
@@ -7,96 +7,67 @@ import rockimg from './images/icon-rock.svg';
 export const GameContext = createContext();
 
 const GameContextProvider = (props) => {
-    const history = useHistory();
+	const history = useHistory();
 
-    const [score, setScore] = useState(0)
-    const [userSelection, setUserSelection] = useState(null)
-    const [userSelectionImg, setUserSelectionImg] = useState(null)
-    const [compSelection, setCompSelection] = useState(null)
-    const [compSelectionImg, setCompSelectionImg] = useState(null)
-    const [winner, setWinner] = useState(null)
+	const data = [
+        {
+            id: 2,
+            name: 'paper',
+            img: paperimg,
+            alt: 'paper',
+            className: 'paper'
+        },
+		{
+            id: 3,
+			name: 'scissors',
+			img: scissorsimg,
+            alt: 'scissors',
+            className: 'scissors'
+		},
+        {
+            id: 1,
+            name: 'rock',
+            img: rockimg,
+            alt: 'rock',
+            className: 'rock'
+        },
+	];
 
-    const [final, setFinal] = useState(compSelection)
+	const [score] = useState(0);
+	const [gameSelections] = useState(data);
+	const [userSelection, setUserSelection] = useState(null);
+	const [compSelection, setCompSelection] = useState(null);
+	const [gameWinner, setGameWinner] = useState(null);
 
-    useEffect(() => {
-        //setFinal(compSelection);
-        if (final === 'YOU LOSE') {
-            setScore(score - 1)
-        } else if (final === 'YOU WIN') {
-            setScore(score + 1)
-        } else {
-            setScore(score)
-        }
-    }, [compSelection,final, score])
+	const comsel =() => {
+		const random = gameSelections[Math.floor(Math.random() * gameSelections.length)];
+		setCompSelection(random);
+	}
 
-    const comsel = useCallback(() => {
-            const choices = ['rock', 'paper', 'scissors']
-
-            const random = choices[Math.floor(Math.random() * choices.length)];
-            setCompSelection(random);
-    
-            if (compSelection === 'rock') {
-                setCompSelectionImg(<img src={rockimg} alt='rock' className='rock-c'/>)
-            } else if (compSelection === 'paper') {
-                setCompSelectionImg(<img src={paperimg} alt='paper' className='paper-c'/>)
-            } else {
-                setCompSelectionImg(<img src={scissorsimg} alt='scissors' className='sci-c'/>)
-            }
-        },[compSelection])
-        
-
-    const rock =()=> {
-        history.push ({
-            pathname: '/gameplay'
-        })
-        setUserSelection('rock')
-        setUserSelectionImg(<img src={rockimg} alt='rock' className='rock-c'/>)
-        
+    const handleGamePlay =(userSelect)=> {
+		history.push({
+			pathname: '/gameplay',
+		})
+        setUserSelection(userSelect)
+        comsel()
     }
 
-    const paper =()=> {
-        history.push ({
-            pathname: '/gameplay'
-        })
-        setUserSelection('paper')
-        setUserSelectionImg(<img src={paperimg} alt='paper' className='paper-c'/>)
-    
-    }
+	return (
+		<GameContext.Provider
+			value={{
+                gameSelections,
+				gameWinner,
+                userSelection,
+                compSelection,
+				score,
+                comsel,
+                handleGamePlay,
+                setGameWinner,
+			}}
+		>
+			{props.children}
+		</GameContext.Provider>
+	);
+};
 
-    const scissors =()=> {
-        history.push ({
-            pathname: '/gameplay'
-        })
-        setUserSelection('scissors')
-        setUserSelectionImg(<img src={scissorsimg} alt='scissors' className='sci-c'/>)
-        
-    }
-
-    const decision = useCallback(() => {
-            if (userSelection === 'rock' && compSelection === 'paper'){
-                setWinner('YOU LOSE')
-            } else if (userSelection === 'paper' && compSelection === 'rock') {
-                setWinner('YOU WIN')
-            } else if (userSelection === 'rock' && compSelection === 'scissors') {
-                setWinner('YOU WIN')
-            } else if (userSelection === 'scissors' && compSelection === 'rock') {
-                setWinner('YOU LOSE')
-            } else if (userSelection === 'scissors' && compSelection === 'paper') {
-                setWinner('YOU WIN')
-            } else if (userSelection === 'paper' && compSelection === 'scissors') {
-                setWinner('YOU LOSE')
-            } else{
-                setWinner('DRAW')
-            }
-        },[compSelection, userSelection])
-
-
-
-    return ( 
-        <GameContext.Provider value={{score, userSelectionImg, compSelectionImg, winner, comsel, rock, paper, scissors, decision}}>
-            {props.children}
-        </GameContext.Provider>
-     );
-}
- 
 export default GameContextProvider;

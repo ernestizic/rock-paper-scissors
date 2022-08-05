@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import rules from '../images/image-rules.svg';
 import close from '../images/icon-close.svg';
 
-const Modal = ({hideModal}) => {
+const Modal = ({hideModal, count}) => {
+    useEffect(()=> {
+        console.log(count)
+    },)
     return (
         <div className='modal'>
             <div className='modal-head'>

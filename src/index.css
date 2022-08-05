@@ -18,6 +18,7 @@ body {
   border: 2px solid hsl(217, 16%, 45%);
   padding: 15px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 .score{
@@ -27,6 +28,7 @@ body {
 }
 
 .triangle{
+  /* border: 1px solid #fff; */
   max-width: 50%;
   margin: 10px auto;
   background-image: url("images/bg-triangle.svg");
@@ -34,11 +36,13 @@ body {
   background-position: center;
   height: 380px;
 }
+.triangle img{
+  border-radius: 50%;
+  padding: 30px;
+}
 .paper{
   background: #fff;
   border: 15px solid hsl(230, 89%, 62%);
-  border-radius: 50%;
-  padding: 30px;
   position: relative;
   top: 20px;
   left: 120px;
@@ -51,8 +55,6 @@ body {
 .scissors{
   background: #fff;
   border: 15px solid hsl(39, 89%, 49%);
-  border-radius: 50%;
-  padding: 30px;
   position: relative;
   top: 20px;
   left: 260px;
@@ -65,8 +67,6 @@ body {
 .rock{
   background: #fff;
   border: 15px solid hsl(349, 71%, 52%);
-  border-radius: 50%;
-  padding: 30px;
   position: relative;
   top: 230px;
   left: -10px;
@@ -127,7 +127,7 @@ body {
   padding: 50px;
 }
 
-.sci-c {
+.scissors-c {
   width: 240px;
   background: #fff;
   border: 25px solid hsl(39, 89%, 49%);
@@ -137,18 +137,19 @@ body {
 
 .selections{
   max-width: 60%;
+  /* padding-top: 30px; */
   margin: 45px auto;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   text-align: center;
 }
 
 .selections h3{
+  text-align: center;
   padding-bottom: 30px;
-}
-.comp-sel h3{
-  padding-bottom: 30px;
+
 }
 
 .counter{
@@ -157,18 +158,203 @@ body {
   border-radius: 50%; 
 }
 .win-decision{
-  border: 1px solid red;
-  padding-top: 150px;
-  margin-left: 50px;
-  margin-right: 50px;
   font-size: 20px;
 }
 .play-again{
-  width: 100%;
-  margin-top: 10px;
-  padding: 10px;
+  padding: 10px 30px;
   border-radius: 5px;
-  border: none;
   color: hsl(349, 71%, 52%);
-  font-weight: bold;
+  background: white;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 375px) {
+  .header {
+    max-width: 100%;
+  }
+  .header .logo img {
+    width: 100px;
+    height: auto;
+  }
+  .score{
+    background: #fff;
+    padding: 2px 30px;
+    border-radius: 10px;
+  }
+
+  .triangle{
+    max-width: 100%;
+    margin: 10px auto;
+    height: 380px;
+  }
+
+  .paper{
+    top: 10px;
+    left: 0;
+  }
+  .scissors{
+    top:10px;
+    left: 40px;
+  }
+  .rock{
+    position: relative;
+    top: 60px;
+    left: 90px;
+  }
+
+  .modal{
+    min-width: 100vw;
+    min-height: 100vh;
+    padding: 30px;
+    border-radius: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  .modal-head{
+    padding-bottom: 100px;
+  }
+  .rule-btn-div{
+    float: none;
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    bottom: 30px;
+    left: 34%;
+  }
+
+  .rock-c{
+    width: 20px;
+    background: #fff;
+    border: 15px solid hsl(349, 71%, 52%);
+    border-radius: 50%;
+    padding: 15px;
+  }
+  
+  .paper-c{
+    width: 40px;
+    background: #fff;
+    border: 15px solid hsl(230, 89%, 62%);
+    border-radius: 50%;
+    padding: 15px;
+  }
+  
+  .scissors-c {
+    width: 40px;
+    background: #fff;
+    border: 15px solid hsl(39, 89%, 49%);
+    border-radius: 50%;
+    padding: 15px;
+  }
+  .selections {
+    position: relative;
+    max-width: 100%;
+  }
+  .selections h3{
+    font-size: 15px;
+  }
+  .selections img{
+    width: 100px;
+  }
+  .win-decision{
+    font-size: 15px;
+    position: absolute;
+    top: 240px;
+  }
+}
+
+
+@media screen and (min-width: 400px) and (max-width: 415px) {
+  .header {
+    max-width: 100%;
+  }
+  .header .logo img {
+    width: 100px;
+    height: auto;
+  }
+  .score{
+    background: #fff;
+    padding: 2px 30px;
+    border-radius: 10px;
+  }
+
+  .triangle{
+    max-width: 100%;
+    margin: 10px auto;
+    height: 380px;
+  }
+
+  .paper{
+    top: 10px;
+    left: 0;
+  }
+  .scissors{
+    top:10px;
+    left: 80px;
+  }
+  .rock{
+    position: relative;
+    top: 60px;
+    left: 120px;
+  }
+
+  .modal{
+    min-width: 100vw;
+    min-height: 100vh;
+    padding: 50px;
+    border-radius: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  .modal-head{
+    padding-bottom: 100px;
+  }
+  .rule-btn-div{
+    float: none;
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    bottom: 30px;
+    left: 34%;
+  }
+
+  .rock-c{
+    width: 20px;
+    background: #fff;
+    border: 15px solid hsl(349, 71%, 52%);
+    border-radius: 50%;
+    padding: 15px;
+  }
+  
+  .paper-c{
+    width: 40px;
+    background: #fff;
+    border: 15px solid hsl(230, 89%, 62%);
+    border-radius: 50%;
+    padding: 15px;
+  }
+  
+  .scissors-c {
+    width: 40px;
+    background: #fff;
+    border: 15px solid hsl(39, 89%, 49%);
+    border-radius: 50%;
+    padding: 15px;
+  }
+  .selections {
+    position: relative;
+    max-width: 100%;
+  }
+  .selections h3{
+    font-size: 15px;
+  }
+  .selections img{
+    width: 100px;
+  }
+  .win-decision{
+    font-size: 15px;
+    position: absolute;
+    top: 240px;
+  }
 }
