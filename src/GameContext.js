@@ -33,23 +33,17 @@ const GameContextProvider = (props) => {
         },
 	];
 
-	const [score] = useState(0);
+	const [score, setScore] = useState(0);
 	const [gameSelections] = useState(data);
 	const [userSelection, setUserSelection] = useState(null);
 	const [compSelection, setCompSelection] = useState(null);
 	const [gameWinner, setGameWinner] = useState(null);
-
-	const comsel =() => {
-		const random = gameSelections[Math.floor(Math.random() * gameSelections.length)];
-		setCompSelection(random);
-	}
 
     const handleGamePlay =(userSelect)=> {
 		history.push({
 			pathname: '/gameplay',
 		})
         setUserSelection(userSelect)
-        comsel()
     }
 
 	return (
@@ -60,7 +54,8 @@ const GameContextProvider = (props) => {
                 userSelection,
                 compSelection,
 				score,
-                comsel,
+                setCompSelection,
+                setScore,
                 handleGamePlay,
                 setGameWinner,
 			}}
